@@ -1,0 +1,42 @@
+{
+  "name": "SwiftReply",
+  "description":"AI-powered reply assistant for Gmail and LinkedIn. Delivers simple, well-crafted, intelligent, fast, and timely responses tailored to your messages.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["activeTab", "storage"],
+  "host_permissions": [
+    "http://localhost:8080/*",
+    "*://mail.google.com/*",
+    "*://www.linkedin.com/*"
+  ],
+  "content_scripts": [
+    {
+      "js": ["gmail-content.js"],
+      "matches": ["*://mail.google.com/*"],
+      "css": ["gmail-content.css"],
+      "run_at": "document_end"
+    },
+    {
+      "js": ["linkedin-content.js"],
+      "matches": ["*://www.linkedin.com/*"],
+      "css": ["linkedin-content.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*"],
+      "matches": ["*://mail.google.com/*", "*://www.linkedin.com/*"]
+    }
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "SmartReply AI",
+    "default_icon": "iconn.png"
+  },
+ "icons": {
+ "48": "icon48.png",
+  "128": "icon128.png"
+ }
+  
+}
